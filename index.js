@@ -4,13 +4,14 @@ var config = {
   appid: 'wxaf1dc044bfd1fe49'
 };
 
-app.use(express.query());
 var app = express();
 
 //app.use(connect.query()); // Or app.use(express.query());
 app.use(express.query());
 app.use('/wechat', wechat(config, function (req, res, next) {
-  // message is located in req.weixin
+  wechat.checkSignature(req, res);
+	
+	// message is located in req.weixin
   var message = req.weixin;
   if (message.FromUserName === 'Amy') {
     // reply with text
