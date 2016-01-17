@@ -1,10 +1,15 @@
 var wechat = require('wechat');
-var express = require('express');
+var config = {
+  token: 'token',
+  appid: 'wxaf1dc044bfd1fe49'
+};
+
+app.use(express.query());
 var app = express();
 
 //app.use(connect.query()); // Or app.use(express.query());
 app.use(express.query());
-app.use('/wechat', wechat('some token', function (req, res, next) {
+app.use('/wechat', wechat(config, function (req, res, next) {
   // message is located in req.weixin
   var message = req.weixin;
   if (message.FromUserName === 'Amy') {
