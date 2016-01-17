@@ -1,4 +1,6 @@
 var wechat = require('wechat');
+var express = require('express');
+var app = express();
 
 app.use(connect.query()); // Or app.use(express.query());
 app.use('/wechat', wechat('some token', function (req, res, next) {
@@ -36,3 +38,4 @@ app.use('/wechat', wechat('some token', function (req, res, next) {
     ]);
   }
 }));
+
